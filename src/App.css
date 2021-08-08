@@ -34,3 +34,11 @@ span.space-plus {
 span.space-plus {
   background: #b49325;
 }
+
+.type-wrap {
+  display: flex;
+  text-align: center;
+}
+.active-type {
+  background: #da9956;
+}
