@@ -8,34 +8,36 @@ import {useState} from 'react';
 function App() {
   let [sumTotal, setTotal] = useState(0);
   let [sumRecur, setRecur] = useState(0);
-  let [eClick, seteClick] = useState(0);
+  let [defaultV, setdefualtVal] = useState(null);
 const addSpace = (addVal) => {
-  setTotal((prevSumTotal)=> prevSumTotal += addVal);
-  setRecur((prevSumRecur)=> prevSumRecur +=addVal);
+  setTotal((prevSumTotal)=> prevSumTotal += defaultV * addVal.defValue);
+  setRecur((prevSumRecur)=> prevSumRecur += defaultV * addVal.defValue);
 }
 
-const addActiveClass = (e) => {
-  console.log(e);
-  console.log("active class added");
+const getDetails = (event, defaultValue) => {
+  setdefualtVal(defaultValue);
+  let allEventDivs = document.querySelectorAll('.type-work-item');
+  let eventDiv = event.currentTarget;
+if(eventDiv.classList.contains('active')) {
+eventDiv.classList.remove('active');
+}
+else{
+  allEventDivs.forEach(element => {
+    element.classList.remove('active');
+  });
+  eventDiv.classList.add('active');
+};
 }
   return (
     <div className="App">
       <Header />
-      <div className="type-wrap">
-      <TypesWork typeName={"Weekly Clean"} clickEvent={addActiveClass} />
-      <TypesWork typeName={"Fortnightly Clean"}/>
-      <TypesWork typeName={"One Off Spring Clean"}/>
-      <TypesWork typeName={"New / Final Home Clean"}/>
-      <TypesWork typeName={"Optional Extra Only"}/>
-      </div>
-      <div className="space-wrap">
-      <SpacesWork addSpace={addSpace} SpaceType={"First One"} TypeClass={"show-class"}/>
-      <SpacesWork addSpace={addSpace} SpaceType={"Second One"}/>
-      <SpacesWork addSpace={addSpace} SpaceType={"Thrid One"}/>
-      <SpacesWork addSpace={addSpace} SpaceType={"Fourth One"}/>
-      <SpacesWork addSpace={addSpace} SpaceType={"Fifth One"}/>
-      </div>
-      
+      <TypesWork typeName={"Type Name:100"} getDetails={getDetails} defaultValue={1}/>
+      <TypesWork typeName={"Type Name:200"} getDetails={getDetails} defaultValue={2}/>
+      <TypesWork typeName={"Type Name:300"} getDetails={getDetails}  defaultValue={3}/>
+      <SpacesWork addSpace={addSpace} SpaceType={"First One"}  defValue={100}/>
+      <SpacesWork addSpace={addSpace} SpaceType={"Second One"}  defValue={200}/>
+      <SpacesWork addSpace={addSpace} SpaceType={"Thrid One"}  defValue={300}/>
+
       <Summery DataTotal={sumTotal} DataRecur={sumRecur}/>
       <Footer />
     </div>

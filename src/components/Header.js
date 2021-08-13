@@ -17,7 +17,7 @@ const NavBar = () => {
 const NavItem = ({value}) => {
   return (
     <li className="nav-item">
-      <a className="nav-link"> Link- {value}  </a>
+      <a className="nav-link" href="http://google.com"> Link- {value}  </a>
     </li>
   )
 }
@@ -25,7 +25,7 @@ const NavItem = ({value}) => {
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-      <a className="navbar-brand" href="#">Logo</a>
+      <a className="navbar-brand" href="http://google.com">Logo</a>
       <NavBar />
     </nav>
   )

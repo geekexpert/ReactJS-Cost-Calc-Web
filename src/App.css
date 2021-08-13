@@ -11,7 +11,6 @@
 }
 .space-work {
   margin: 5px 0;
-  display: none;
 }
 .hide-class {
   display: none;
@@ -35,10 +34,6 @@ span.space-plus {
   background: #b49325;
 }
 
-.type-wrap {
-  display: flex;
-  text-align: center;
-}
-.active-type {
-  background: #da9956;
+.type-work-wrap .active {
+  background:tomato;
 }
